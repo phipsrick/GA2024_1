@@ -1,2 +1,2 @@
 # GA2024_1
-Essentials for Data Science Group assignment
+Essentials for Data Science Group Assignment
