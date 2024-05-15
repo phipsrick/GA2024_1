@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy import orm 
+from sqlalchemy import create_engine
 
 Base = orm.declarative_base()
 
@@ -31,4 +32,14 @@ class P1g(Base):
     total_gas_used = Column(Float)
 
 class HomeMessagesDB:
-    pass
+    def __init__(self, db_url):
+        self.engine = create_engine(db_url)
+
+    def addSmartthings(self):
+        pass
+
+    def addP1e(self):
+        pass
+
+    def addP1g(self):
+        pass
