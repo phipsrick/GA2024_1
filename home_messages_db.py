@@ -31,15 +31,38 @@ class P1g(Base):
     time = Column(Integer)
     total_gas_used = Column(Float)
 
+
 class HomeMessagesDB:
     def __init__(self, db_url):
         self.engine = create_engine(db_url)
+        Base.metadata.create_all(self.engine)
 
-    def addSmartthings(self):
-        pass
-
-    def addP1e(self):
-        pass
-
-    def addP1g(self):
-        pass
+    def add_smartthings(self, data):
+        with orm.Session(self.engine) as session:
+            for record in data:
+                exists_query = session.query(exists().where(
+                    SmartThings.loc == record['loc']).where(
+                    SmartThings.level == record['level']).where(
+                    SmartThings.name == record['name']).where(
+                    SmartThings.epoch == record['epoch'])).scalar()
+                if not exists_query:
+                    session.add(SmartThings(**record))
+            session.commit()
+            
+    def add_p1e(self, data):
+        with orm.Session(self.engine) as session:
+            for record in data:
+                exists_query = session.query(exists().where(
+                    P1e.time == record['time'])).scalar()
+                if not exists_query:
+                    session.add(P1e(**record))
+            session.commit()
+           
+    def add_p1g(self, data):
+        with orm.Session(self.engine) as session:
+            for record in data:
+                exists_query = session.query(exists().where(
+                    P1g.time == record['time'])).scalar()
+                if not exists_query:
+                    session.add(P1g(**record))
+            session.commit()
