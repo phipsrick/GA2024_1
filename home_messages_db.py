@@ -13,7 +13,7 @@ class SmartThings(Base):
     epoch = Column(Integer)
     capability = Column(String)
     attribute = Column(String)
-    value = Column(Float)
+    value = Column(String)
     unit = Column(String)
 
 class P1e(Base):
@@ -39,30 +39,42 @@ class HomeMessagesDB:
 
     def add_smartthings(self, data):
         with orm.Session(self.engine) as session:
-            for record in data:
-                exists_query = session.query(exists().where(
-                    SmartThings.loc == record['loc']).where(
-                    SmartThings.level == record['level']).where(
-                    SmartThings.name == record['name']).where(
-                    SmartThings.epoch == record['epoch'])).scalar()
-                if not exists_query:
-                    session.add(SmartThings(**record))
-            session.commit()
-            
+            try:
+                for record in data:
+                    exists_query = session.query(exists().where(
+                        SmartThings.loc == record['loc']).where(
+                        SmartThings.level == record['level']).where(
+                        SmartThings.name == record['name']).where(
+                        SmartThings.epoch == record['epoch'])).scalar()
+                    if not exists_query:
+                        session.add(SmartThings(**record))
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                raise Exception(f"Error inserting SmartThings data: {e}")
+
     def add_p1e(self, data):
         with orm.Session(self.engine) as session:
-            for record in data:
-                exists_query = session.query(exists().where(
-                    P1e.time == record['time'])).scalar()
-                if not exists_query:
-                    session.add(P1e(**record))
-            session.commit()
-           
+            try:
+                for record in data:
+                    exists_query = session.query(exists().where(
+                        P1e.time == record['time'])).scalar()
+                    if not exists_query:
+                        session.add(P1e(**record))
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                raise Exception(f"Error inserting P1e data: {e}")
+
     def add_p1g(self, data):
         with orm.Session(self.engine) as session:
-            for record in data:
-                exists_query = session.query(exists().where(
-                    P1g.time == record['time'])).scalar()
-                if not exists_query:
-                    session.add(P1g(**record))
-            session.commit()
+            try:
+                for record in data:
+                    exists_query = session.query(exists().where(
+                        P1g.time == record['time'])).scalar()
+                    if not exists_query:
+                        session.add(P1g(**record))
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                raise Exception(f"Error inserting P1g data: {e}")
