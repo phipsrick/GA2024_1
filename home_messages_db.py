@@ -31,7 +31,6 @@ class P1g(Base):
     time = Column(Integer)
     total_gas_used = Column(Float)
 
-
 class HomeMessagesDB:
     def __init__(self, db_url):
         self.engine = create_engine(db_url)
