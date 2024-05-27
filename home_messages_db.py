@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float
-from sqlalchemy import orm 
-from sqlalchemy import create_engine
+from sqlalchemy import Column, Integer, String, Float, create_engine, orm
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.sql import exists 
 
 Base = orm.declarative_base()
 
@@ -30,6 +31,18 @@ class P1g(Base):
     id = Column(Integer, primary_key=True)
     time = Column(Integer)
     total_gas_used = Column(Float)
+
+class WeatherData(Base):
+    __tablename__ = 'weather_data'
+    id = Column(Integer, primary_key=True)
+    time = Column(Integer, index=True) 
+    temperature_2m = Column(Float)
+    relativehumidity_2m = Column(Float)
+    rain = Column(Float)
+    snowfall = Column(Float)
+    windspeed_10m = Column(Float)
+    winddirection_10m = Column(Float)
+    soil_temperature_0_to_7cm = Column(Float)
 
 class HomeMessagesDB:
     def __init__(self, db_url):
@@ -77,3 +90,16 @@ class HomeMessagesDB:
             except Exception as e:
                 session.rollback()
                 raise Exception(f"Error inserting P1g data: {e}")
+    
+    def add_weather_data(self, data):
+        with orm.Session(self.engine) as session:
+            try:
+                for record in data:
+                    exists_query = session.query(exists().where(
+                        WeatherData.time == record['time'])).scalar()
+                    if not exists_query:
+                        session.add(WeatherData(**record))
+                session.commit() 
+            except Exception as e:
+                session.rollback() 
+                raise Exception(f"Error inserting weather data: {e}")
