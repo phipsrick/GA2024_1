@@ -1,6 +1,5 @@
 import click
 from home_messages_db import HomeMessagesDB
-import gzip
 import pandas as pd
 import requests
 
