@@ -10,12 +10,12 @@ def main(dburl):
     download = requests.get(url)
     if download.status_code == 200:
         data = download.json()
-        weather_data = pd.DataFrame(data['hourly'])
-        weather_data.fillna('', inplace=True) 
-        weather_data_records = weather_data.to_dict(orient='records')
+        df = pd.DataFrame(data['hourly'])
+        df.fillna('', inplace=True) 
+        data = df.to_dict(orient='records')
 
         db = HomeMessagesDB(dburl)
-        db.add_weather_data(weather_data_records)
+        db.add_weather_data(data)
         print(f"Inserted data from Open Meteo into the database.")
     else:
         print("Failed to retrieve data.")
