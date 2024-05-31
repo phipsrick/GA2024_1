@@ -105,7 +105,12 @@ class HomeMessagesDB:
                 raise Exception(f"Error inserting weather data: {e}")
 
     def get_smartthings(self): 
-        pass
+        with orm.Session(self.engine) as session:
+            query = session.query(SmartThings).all()
+        df = pd.DataFrame(query, 
+                          columns=['id', 'loc', 'level', 'name', 'epoch', 'capability', 'attribute', 'value', 'unit'])
+        df['time'] = pd.to_datetime(df['epoch'], unit='s')
+        return df
 
     def get_p1e(self): 
         pass
