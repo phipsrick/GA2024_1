@@ -20,7 +20,7 @@ class SmartThings(Base):
 class P1e(Base):
     __tablename__ = 'p1e'
     id = Column(Integer, primary_key=True)
-    time = Column(Integer)
+    time = Column(Integer, unique = True)
     electricity_imported_t1 = Column(Float)
     electricity_imported_t2= Column(Float)
     electricity_exported_t1 = Column(Float)
@@ -29,7 +29,7 @@ class P1e(Base):
 class P1g(Base):
     __tablename__ = 'p1g'
     id = Column(Integer, primary_key=True)
-    time = Column(Integer)
+    time = Column(Integer, unique = True)
     total_gas_used = Column(Float)
 
 class WeatherData(Base):
