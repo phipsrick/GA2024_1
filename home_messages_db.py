@@ -111,6 +111,7 @@ class HomeMessagesDB:
             query = session.query(SmartThings).all()
         data = [(row.id, row.loc, row.level, row.name, row.epoch, row.capability, row.attribute, row.value, row.unit) for row in query]
         df = pd.DataFrame(data, columns=['id', 'loc', 'level', 'name', 'epoch', 'capability', 'attribute', 'value', 'unit'])
+        df.reset_index(drop=True, inplace=True)
         return df
 
     def get_p1e(self):
