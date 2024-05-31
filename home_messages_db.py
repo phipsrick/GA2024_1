@@ -51,7 +51,6 @@ class HomeMessagesDB:
         Base.metadata.create_all(self.engine)
         self.Session = sessionmaker(bind=self.engine)
 
-
     def add_smartthings(self, data):
         with orm.Session(self.engine) as session:
             try:
@@ -107,19 +106,30 @@ class HomeMessagesDB:
                 session.rollback() 
                 raise Exception(f"Error inserting weather data: {e}")
 
-    def get_smartthings(self): 
-        with self.Session() as session:
+    def get_smartthings(self):
+        with orm.Session(self.engine) as session:
             query = session.query(SmartThings).all()
-        df = pd.DataFrame(query, 
-                          columns=['id', 'loc', 'level', 'name', 'epoch', 'capability', 'attribute', 'value', 'unit'])
-        df['time'] = pd.to_datetime(df['epoch'], unit='s')
+        data = [(row.id, row.loc, row.level, row.name, row.epoch, row.capability, row.attribute, row.value, row.unit) for row in query]
+        df = pd.DataFrame(data, columns=['id', 'loc', 'level', 'name', 'epoch', 'capability', 'attribute', 'value', 'unit'])
         return df
 
-    def get_p1e(self): 
-        pass
+    def get_p1e(self):
+        with orm.Session(self.engine) as session:
+            query = session.query(P1e).all()
+        data = [(row.id, row.time, row.electricity_imported_t1, row.electricity_imported_t2, row.electricity_exported_t1, row.electricity_exported_t2) for row in query]
+        df = pd.DataFrame(data, columns=['id', 'time', 'electricity_imported_t1', 'electricity_imported_t2', 'electricity_exported_t1', 'electricity_exported_t2'])
+        return df
 
-    def get_p1g(self): 
-        pass
+    def get_p1g(self):
+        with orm.Session(self.engine) as session:
+            query = session.query(P1g).all()
+        data = [(row.id, row.time, row.total_gas_used) for row in query]
+        df = pd.DataFrame(data, columns=['id', 'time', 'total_gas_used'])
+        return df
 
-    def get_weather_data(self): 
-        pass
+    def get_weather_data(self):
+        with orm.Session(self.engine) as session:
+            query = session.query(WeatherData).all()
+        data = [(row.id, row.time, row.temperature_2m, row.relativehumidity_2m, row.rain, row.snowfall, row.windspeed_10m, row.winddirection_10m, row.soil_temperature_0_to_7cm) for row in query]
+        df = pd.DataFrame(data, columns=['id', 'time', 'temperature_2m', 'relativehumidity_2m', 'rain', 'snowfall', 'windspeed_10m', 'winddirection_10m', 'soil_temperature_0_to_7cm'])
+        return df
