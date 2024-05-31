@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Float, create_engine, orm
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.sql import exists 
+import pandas as pd
 
 Base = orm.declarative_base()
 
