@@ -49,6 +49,8 @@ class HomeMessagesDB:
     def __init__(self, db_url):
         self.engine = create_engine(db_url)
         Base.metadata.create_all(self.engine)
+        self.Session = sessionmaker(bind=self.engine)
+
 
     def add_smartthings(self, data):
         with orm.Session(self.engine) as session:
@@ -106,7 +108,7 @@ class HomeMessagesDB:
                 raise Exception(f"Error inserting weather data: {e}")
 
     def get_smartthings(self): 
-        with orm.Session(self.engine) as session:
+        with self.Session() as session:
             query = session.query(SmartThings).all()
         df = pd.DataFrame(query, 
                           columns=['id', 'loc', 'level', 'name', 'epoch', 'capability', 'attribute', 'value', 'unit'])
