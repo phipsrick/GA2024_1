@@ -103,3 +103,15 @@ class HomeMessagesDB:
             except Exception as e:
                 session.rollback() 
                 raise Exception(f"Error inserting weather data: {e}")
+
+    def get_smartthings(self): 
+        pass
+
+    def get_p1e(self): 
+        pass
+
+    def get_p1g(self): 
+        pass
+
+    def get_weather_data(self): 
+        pass
