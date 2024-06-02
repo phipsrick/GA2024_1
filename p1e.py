@@ -19,7 +19,7 @@ def main(dburl, files):
             df.columns = ['time', 't1_imported', 't2_imported', 't1_exported', 't2_exported']
                 
             # Convert time to Europe/Amsterdam timezone
-            df['time'] = pd.to_datetime(df['time']).dt.tz_localize('UTC').dt.tz_convert(amsterdam_tz)
+            df[['time']] = pd.to_datetime(df['time']).dt.tz_localize('UTC').dt.tz_convert(amsterdam_tz).dt.tz_localize(None)
                 
             df.fillna('', inplace=True)
             data = df.to_dict(orient='records')
