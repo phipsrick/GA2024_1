@@ -15,7 +15,9 @@ def main(dburl, files):
     for file in files:
         with gzip.open(file, 'rt') as f:
             df = pd.read_csv(f)
-
+            df = df[['time', 'Total gas used']]
+            df.columns = ['time', 'total_gas_used']
+            
             # Convert time to datetime and then to Europe/Amsterdam timezone
             df['time'] = pd.to_datetime(df['time']).dt.tz_localize('UTC').dt.tz_convert(amsterdam_tz).dt.tz_localize(None)
             
