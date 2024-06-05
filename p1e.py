@@ -25,10 +25,6 @@ def main(dburl, files):
                 
             # Convert time to datetime and then to Europe/Amsterdam timezone
             df['time'] = pd.to_datetime(df['time']).dt.tz_localize('UTC').dt.tz_convert(amsterdam_tz).dt.tz_localize(None)
-            
-            # Debugging: Print final time column
-            #print("Final 'time' column after timezone conversion:")
-            #print(df['time'].head())
 
             # Convert empty strings to NaN
 
