@@ -27,7 +27,6 @@ def main(dburl, files):
             df['time'] = pd.to_datetime(df['time']).dt.tz_localize('UTC').dt.tz_convert(amsterdam_tz).dt.tz_localize(None)
 
             # Convert empty strings to NaN
-
             df.replace('', np.nan, inplace=True)
 
             # Convert NaN to None
