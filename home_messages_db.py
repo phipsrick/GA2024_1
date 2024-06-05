@@ -54,14 +54,13 @@ class HomeMessagesDB:
     def add_smartthings(self, data):
         with orm.Session(self.engine) as session:
             try:
-                for record in data:
-                    exists_query = session.query(exists().where(
-                        SmartThings.loc == record['loc']).where(
-                        SmartThings.level == record['level']).where(
-                        SmartThings.name == record['name']).where(
-                        SmartThings.epoch == record['epoch'])).scalar()
-                    if not exists_query:
-                        session.add(SmartThings(**record))
+                existing_records = session.query(SmartThings.loc, SmartThings.level, SmartThings.name, SmartThings.epoch).all()
+                existing_records_set = set(existing_records)
+
+                new_records = [SmartThings(**record) for record in data if (
+                    record['loc'], record['level'], record['name'], record['epoch']) not in existing_records_set]
+
+                session.bulk_save_objects(new_records)
                 session.commit()
             except Exception as e:
                 session.rollback()
