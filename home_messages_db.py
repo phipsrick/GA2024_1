@@ -66,41 +66,33 @@ class HomeMessagesDB:
                 session.rollback()
                 raise Exception(f"Error inserting SmartThings data: {e}")
 
-
-
     def add_p1e(self, records):
-        session = self.Session()
-        try:
-            for record in records:
-                # Convert timestamp to string format
-                record['time'] = str(record['time'])
-                if not session.query(P1e).filter(P1e.time == record['time']).scalar():
-                    p1e = P1e(**record)
-                    session.add(p1e)
-            session.commit()
-        except Exception as e:
-            session.rollback()
-            raise Exception(f"Error inserting P1e data: {e}")
-        finally:
-            session.close()
-
-
+        with orm.Session(self.engine) as session:
+            try:
+                for record in records:
+                    # Convert timestamp to string format
+                    record['time'] = str(record['time'])
+                    if not session.query(P1e).filter(P1e.time == record['time']).scalar():
+                        p1e = P1e(**record)
+                        session.add(p1e)
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                raise Exception(f"Error inserting P1e data: {e}")
 
     def add_p1g(self, records):
-        session = self.Session()
-        try:
-            for record in records:
-                # Convert timestamp to string format
-                record['time'] = str(record['time'])
-                if not session.query(P1g).filter(P1g.time == record['time']).scalar():
-                    p1g = P1g(**record)
-                    session.add(p1g)
-            session.commit()
-        except Exception as e:
-            session.rollback()
-            raise Exception(f"Error inserting P1g data: {e}")
-        finally:
-            session.close()
+        with orm.Session(self.engine) as session:
+            try:
+                for record in records:
+                    # Convert timestamp to string format
+                    record['time'] = str(record['time'])
+                    if not session.query(P1g).filter(P1g.time == record['time']).scalar():
+                        p1g = P1g(**record)
+                        session.add(p1g)
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                raise Exception(f"Error inserting P1g data: {e}")
     
     def add_weather_data(self, data):
         with orm.Session(self.engine) as session:
