@@ -1,5 +1,15 @@
 sqlalchemy
 pandas
+numpy
 click
 requests
 pytz
+jinja2
+scipy.stats
+statsmodels.api
+sys
+os
+seaborn
+calendar
+matplotlib
+
