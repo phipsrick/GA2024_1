@@ -88,3 +88,5 @@ Covered weather variables from the region of interest include a timestamp, the a
 | Maria      | xxx    | xxx    | 
 | Myrto      | xxx    | xxx    | 
 | Philipp Rickert | s2487632 | phipsrick |
+
+We declare that all group members contributed equally to all project tasks so that we receive a group grade instead of individual grades.
