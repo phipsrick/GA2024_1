@@ -9,3 +9,4 @@ scipy
 seaborn
 sqlalchemy
 statsmodels
+IPython.display
