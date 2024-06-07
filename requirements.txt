@@ -1,4 +1,5 @@
 click
+ipython
 jinja2
 matplotlib
 numpy
@@ -9,4 +10,3 @@ scipy
 seaborn
 sqlalchemy
 statsmodels
-IPython.display
