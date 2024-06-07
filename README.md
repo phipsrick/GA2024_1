@@ -67,6 +67,11 @@ This report analyzes the relationship between motion sensor events and weather c
 
 The report concludes that temperature has a statistically significant negative relationship with motion events, while rain does not significantly affect the number of motion events.
 
+### `report2.ipynb`
+xxx
+
+### `report3.ipynb`
+xxx
 {## Open Meteo weather tool (openweathermap.py)
 
 This tool downloads historical weather data from January 2022 up to April 2024 from the region of interest (Nordwijk area) through an API provided by open-meteo.com. and loads it into the database by processing the downloaded json file. 
