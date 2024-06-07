@@ -20,9 +20,9 @@ This project analyzes data from various smart home devices and weather data to u
 
 1. Initialize the database and insert data:
     ```bash
-    python smartthings.py -d sqlite:///myhome.db data/smartthings/smartthings.*
-    python p1e.py -d sqlite:///myhome.db data/P1e/P1e-*.csv.gz
-    python p1g.py -d sqlite:///myhome.db data/P1g/P1g-*.csv.gz
+    python smartthings.py -d sqlite:///myhome.db Data/smartthings/smartthings.*
+    python p1e.py -d sqlite:///myhome.db Data/P1e/P1e-*.csv.gz
+    python p1g.py -d sqlite:///myhome.db Data/P1g/P1g-*.csv.gz
     python openweathermap.py -d sqlite:///myhome.db
     ```
 
