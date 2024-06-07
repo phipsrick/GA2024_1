@@ -5,11 +5,7 @@ click
 requests
 pytz
 jinja2
-scipy.stats
-statsmodels.api
-sys
-os
+scipy
+statsmodels
 seaborn
-calendar
 matplotlib
-
