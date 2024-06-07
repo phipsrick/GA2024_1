@@ -95,7 +95,7 @@ xxx
 | Full Name        | Student Number | GitHub Name  |
 |-----------------|--------|-------------|
 | Joshua Damm       | s4036018    | SensationSeeker    | 
-| Magda      | xxx    | xxx    |
+| Magdalena Skrzycki      | s4115708    | mskrzycki    |
 | Maria      | xxx    | xxx    | 
 | Myrto      | xxx    | xxx    | 
 | Philipp Rickert | s2487632 | phipsrick |
