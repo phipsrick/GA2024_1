@@ -54,13 +54,17 @@ This project aims to analyze energy and weather data collected from various smar
     ```
 ## Tool Descriptions 
 
-### Open Meteo Weather Tool `openweathermap.py`
+### smartthings.py
+This tool processes and loads smart home device data from SmartThings into the database. It reads compressed TSV files containing messages from various smart home devices. The tool converts these messages into a standardized format by handling missing values and ensuring unique records. It maps columns like location, level, name, and timestamp to the database schema and ensures that no duplicate records are inserted. A confirmation message is printed after successfully inserting data from each file.
 
-This tool downloads historical weather data from January 2022 up to April 2024 from the region of interest (Nordwijk area) through an API provided by open-meteo.com. and loads it into the database by processing the downloaded json file. 
+### p1e.py
+This tool processes and loads electricity consumption data into the database. It reads compressed CSV files containing electricity usage data collected biweekly with a 15-minute resolution. The tool standardizes column names to match the database schema, converts timestamps to the Europe/Amsterdam timezone, and handles missing values by replacing empty strings with NaN. It ensures no duplicate records are inserted, maintaining data integrity, and prints a confirmation message upon successful data insertion.
 
-The Historical Weather API is based on reanalysis datasets and uses a combination of weather station, aircraft, buoy, radar, and satellite observations to create a comprehensive record of past weather conditions. These datasets are able to fill in gaps by using mathematical models to estimate the values of various weather variables. The models for historical weather data use a spatial resolution of 9 km. 
+### p1g.py
+This tool processes and loads gas consumption data into the database. It reads compressed CSV files containing gas usage data collected biweekly with a 15-minute resolution. The tool standardizes column names to match the database schema, converts timestamps to the Europe/Amsterdam timezone, and handles missing values by replacing empty strings with NaN. It ensures no duplicate records are inserted, maintaining data integrity, and prints a confirmation message upon successful data insertion.
 
-Covered weather variables from the region of interest include a timestamp, the air temperature at 2 meters above ground in °C units (temperature_2m), the relative humidity at 2 meters above ground in % units (relativehumidity_2m), the liquid precipitation of the preceding hour including local showers and rain from large scale systems in mm units (rain), the snowfall amount of the preceding hour in cm units (snowfall), the wind speed at 10 meters above ground in km/h units (windspeed_10m), the wind direction at 10 meters above ground in °degree units (winddirection_10m), and the average temperature of the soil 7cm below ground in °C units(soil_temperature_0_to_7cm).
+### openweathermap.py 
+This tool downloads historical weather data from January 2022 up to April 2024 for the Nordwijk area through an API provided by open-meteo.com and loads it into the database by processing the downloaded JSON file. The Historical Weather API uses reanalysis datasets combining weather station, aircraft, buoy, radar, and satellite observations to create a comprehensive record of past weather conditions. Weather variables include air temperature at 2 meters, relative humidity at 2 meters, precipitation, snowfall, wind speed at 10 meters, wind direction at 10 meters, and soil temperature at 7 cm below ground. The tool handles data gaps using mathematical models and ensures accurate data insertion.
 
 ## Report Descriptions
 
