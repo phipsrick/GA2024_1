@@ -80,8 +80,12 @@ This report analyzes the relationship between motion sensor events and weather c
 
 The report concludes that temperature has a statistically significant negative relationship with motion events, while rain does not significantly affect the number of motion events.
 
-### `report2.ipynb`
-xxx
+### `report_temperature_gas_usage.ipynb`
+
+This report analyzes the relationship between in-house temperature and outside temperature in the Nordwijk area and the households' daily gas usage. Inside temperature is sourced from Smartthings, outside temperature is taken from the weather data, and gas usage is taken from the gas usage data (P1g). This report provides data preprocessing, summary statistics, time-series visualizations, correlation and regression analyses. 
+
+We could conclude that there is a slight positive association between inside temperature and daily gas usage and heavy negative correlation between outside temperature and gas usage. Household members use less gas in the cold periods than in the warm periods.
+
 
 ### `report3.ipynb`
 xxx
