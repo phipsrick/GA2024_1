@@ -84,7 +84,7 @@ xxx
 
 
 ## Contributions
-| Full Name        | Student No | GitHub Name  |
+| Full Name        | Student Number | GitHub Name  |
 |-----------------|--------|-------------|
 | Josh       | xxx    | xxx    | 
 | Magda      | xxx    | xxx    |
