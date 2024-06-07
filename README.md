@@ -87,8 +87,27 @@ This report analyzes the relationship between in-house temperature and outside t
 We could conclude that there is a slight positive association between inside temperature and daily gas usage and heavy negative correlation between outside temperature and gas usage. Household members use less gas in the cold periods than in the warm periods.
 
 
-### `report3.ipynb`
-xxx
+### `report_electricity_and_gas.ipynb`
+
+This report is about finding any possible patterns regarding Electricity and Gas usage.
+
+- **Data Manipulation**: - Added columns for:
+                           - Total electricity usage (electricity_imported_t1, electricity_imported_t2, electricity_exported_t1, electricity_exported_t2).
+                           - Year and week (Year:Week).
+                           - Month numbers (Month).
+                           - Month names (Month_Name)
+  
+                        - Converted time columns to datetime format.
+  
+- **Calculations**: - Computed total electricity usage.
+                    - Calculated differences in total electricity to capture fluctuations.
+
+- **Visualization**: - Plotted weekly mean electricity usage.
+                     - Used color coding to represent different months.
+- **Analysis**:  - Examined weekly patterns and seasonal variations in electricity usage.
+                 - Investigated similar patterns for gas usage.
+
+
 
 
 ## Contributions
@@ -96,8 +115,8 @@ xxx
 |-----------------|--------|-------------|
 | Joshua Damm       | s4036018    | SensationSeeker    | 
 | Magdalena Skrzycki      | s4115708    | mskrzycki    |
-| Maria      | xxx    | xxx    | 
-| Myrto      | xxx    | xxx    | 
+| Maria      | s3862836    | mariaanth    | 
+| Myrto      | s3841898    | MyrtoPieridou    | 
 | Philipp Rickert | s2487632 | phipsrick |
 
 We declare that all group members contributed equally to all project tasks so that we receive a group grade instead of individual grades.
