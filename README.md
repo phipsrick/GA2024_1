@@ -81,13 +81,10 @@ The Historical Weather API is based on reanalysis datasets and uses a combinatio
 Covered weather variables from the region of interest include a timestamp, the air temperature at 2 meters above ground in °C units (temperature_2m), the relative humidity at 2 meters above ground in % units (relativehumidity_2m), the liquid precipitation of the preceding hour including local showers and rain from large scale systems in mm units (rain), the snowfall amount of the preceding hour in cm units (snowfall), the wind speed at 10 meters above ground in km/h units (windspeed_10m), the wind direction at 10 meters above ground in °degree units (winddirection_10m), and the average temperature of the soil 7cm below ground in °C units(soil_temperature_0_to_7cm).}
 
 ## Contributions
-Josh 
-Magda
-Maria
-Myrto
-Philipp
-
-
-
-
-
+| Full Name        | Student No | GitHub Name  |
+|-----------------|--------|-------------|
+| Josh       | xxx    | xxx    | 
+| Magda      | xxx    | xxx    |
+| Maria      | xxx    | xxx    | 
+| Myrto      | xxx    | xxx    | 
+| Philipp Rickert | s2487632 | phipsrick |
