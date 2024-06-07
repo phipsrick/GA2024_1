@@ -9,28 +9,41 @@ import pytz
 @click.option('-d', '--dburl', required=True, help='Database URL')
 @click.argument('files', nargs=-1, type=click.Path(exists=True))
 def main(dburl, files):
+    # Initialize the HomeMessagesDB instance with the provided database URL
     db = HomeMessagesDB(dburl)
+    
+    # Define the timezone for Amsterdam
     amsterdam_tz = pytz.timezone('Europe/Amsterdam')
     
+    # Iterate through each provided file
     for file in files:
+        # Open each gzip-compressed CSV file in read-text mode
         with gzip.open(file, 'rt') as f:
+            # Read the CSV file into a pandas DataFrame
             df = pd.read_csv(f)
+            
+            # Select and rename relevant columns to match database schema
             df = df[['time', 'Total gas used']]
             df.columns = ['time', 'total_gas_used']
             
             # Convert time to datetime and then to Europe/Amsterdam timezone
             df['time'] = pd.to_datetime(df['time']).dt.tz_localize('UTC').dt.tz_convert(amsterdam_tz).dt.tz_localize(None)
 
-            # Convert empty strings to NaN
+            # Convert empty strings to NaN (Not a Number)
             df.replace('', np.nan, inplace=True)
 
-            # Convert NaN to None
+            # Convert NaN values to None (to handle missing values)
             df = df.where(pd.notnull(df), None)
 
+            # Convert the DataFrame to a list of dictionaries, each representing a record
             data = df.to_dict(orient='records')
                 
+            # Insert the data into the database using the add_p1g method
             db.add_p1g(data)
+            
+            # Print a confirmation message indicating successful insertion
             print(f"Inserted data from {file} into the database.")
 
 if __name__ == '__main__':
+    # Execute the main function when the script is run directly
     main()
