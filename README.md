@@ -54,16 +54,16 @@ This project aims to analyze energy and weather data collected from various smar
     ```
 ## Tool Descriptions 
 
-### smartthings.py
+### `smartthings.py`
 This tool processes and loads smart home device data from SmartThings into the database. It reads compressed TSV files containing messages from various smart home devices. The tool converts these messages into a standardized format by handling missing values and ensuring unique records. It maps columns like location, level, name, and timestamp to the database schema and ensures that no duplicate records are inserted. A confirmation message is printed after successfully inserting data from each file.
 
-### p1e.py
+### `p1e.py`
 This tool processes and loads electricity consumption data into the database. It reads compressed CSV files containing electricity usage data collected biweekly with a 15-minute resolution. The tool standardizes column names to match the database schema, converts timestamps to the Europe/Amsterdam timezone, and handles missing values by replacing empty strings with NaN. It ensures no duplicate records are inserted, maintaining data integrity, and prints a confirmation message upon successful data insertion.
 
-### p1g.py
+### `p1g.py`
 This tool processes and loads gas consumption data into the database. It reads compressed CSV files containing gas usage data collected biweekly with a 15-minute resolution. The tool standardizes column names to match the database schema, converts timestamps to the Europe/Amsterdam timezone, and handles missing values by replacing empty strings with NaN. It ensures no duplicate records are inserted, maintaining data integrity, and prints a confirmation message upon successful data insertion.
 
-### openweathermap.py 
+### `openweathermap.py` 
 This tool downloads historical weather data from January 2022 up to April 2024 for the Nordwijk area through an API provided by open-meteo.com and loads it into the database by processing the downloaded JSON file. The Historical Weather API uses reanalysis datasets combining weather station, aircraft, buoy, radar, and satellite observations to create a comprehensive record of past weather conditions. Weather variables include air temperature at 2 meters, relative humidity at 2 meters, precipitation, snowfall, wind speed at 10 meters, wind direction at 10 meters, and soil temperature at 7 cm below ground. The tool handles data gaps using mathematical models and ensures accurate data insertion.
 
 ## Report Descriptions
