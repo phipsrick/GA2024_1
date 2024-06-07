@@ -96,6 +96,7 @@ This report is about finding any possible patterns regarding Electricity and Gas
 - **Visualization**: Plotted weekly mean electricity usage, used color coding to represent different months.
 - **Analysis**:  Examined weekly patterns and seasonal variations in electricity usage, investigated similar patterns for gas usage.
 
+The report concludes that there are indeed discernible patterns in both electricity and gas usage, which can be attributed to seasonal changes.
 
 ## Contributions
 | Full Name        | Student Number | GitHub Name  |
