@@ -90,7 +90,7 @@ xxx
 ## Contributions
 | Full Name        | Student Number | GitHub Name  |
 |-----------------|--------|-------------|
-| Josh       | xxx    | xxx    | 
+| Joshua Damm       | s4036018    | SensationSeeker    | 
 | Magda      | xxx    | xxx    |
 | Maria      | xxx    | xxx    | 
 | Myrto      | xxx    | xxx    | 
