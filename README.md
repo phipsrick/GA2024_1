@@ -91,7 +91,7 @@ We could conclude that there is a slight positive association between inside tem
 
 This report is about finding any possible patterns regarding Electricity and Gas usage.
 
-- **Data Manipulation**: - Added columns for:
+- **Data Manipulation**: Added columns for:/
                            - Total electricity usage (electricity_imported_t1, electricity_imported_t2, electricity_exported_t1, electricity_exported_t2).
                            - Year and week (Year:Week).
                            - Month numbers (Month).
